@@ -2,8 +2,7 @@ import { type Route } from "@std/http/unstable-route";
 import { type DatabaseSync } from "node:sqlite";
 
 export const createHandlers = (db: DatabaseSync): Route[] => {
-    db.exec(``)
-    return [];
+    return [shortenUrlHandler(db)];
 }
 
 const shortenUrlHandler = (db: DatabaseSync): Route => {
@@ -12,7 +11,7 @@ const shortenUrlHandler = (db: DatabaseSync): Route => {
     return {
         pattern: new URLPattern({pathname: "/"}),
         handler: async (req: Request, params: URLPatternResult | undefined): Promise<Response> => {
-
+            return new Response("Not implemented", {status: 501});// TODO
         }
     }
 }
